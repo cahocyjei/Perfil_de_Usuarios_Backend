@@ -1,0 +1,12 @@
+package com.profile.user.controller;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController("profile/user_address")
+@RequestMapping(value="/profile/user_address")
+public class AddressProfileController {
+	
+	
+
+}

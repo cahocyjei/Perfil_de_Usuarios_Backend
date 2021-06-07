@@ -1,0 +1,12 @@
+package com.profile.user.dto;
+
+import com.profile.user.entity.UserProfileEntity;
+import com.profile.user.model.UserProfileModel;
+
+public class DtoUserProfile {
+
+	public static UserProfileEntity userPModelToUserProfileEntity(UserProfileModel userPM) {
+		UserProfileEntity userPE = new UserProfileEntity();
+		return null;
+	}
+}

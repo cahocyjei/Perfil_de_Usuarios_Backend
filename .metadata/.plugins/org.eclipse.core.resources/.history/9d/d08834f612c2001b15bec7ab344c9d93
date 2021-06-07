@@ -1,0 +1,5 @@
+package com.profile.user.interfaces;
+
+public interface IuserProfile   {
+
+}

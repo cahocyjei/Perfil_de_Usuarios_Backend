@@ -1,0 +1,22 @@
+package com.profile.user.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.profile.user.model.UserProfileModel;
+import com.profile.user.service.ServiceProfileUser;
+
+@RestController(value="profile/user_profile")
+public class UserProfileController {
+	
+	@Autowired
+	private ServiceProfileUser serviceProfileUser;
+	
+	@GetMapping("/")
+	public UserProfileModel createProfileUser(UserProfileModel userPM) {
+		
+		return serviceProfileUser.createProfileUser(userPM);
+	}
+
+}

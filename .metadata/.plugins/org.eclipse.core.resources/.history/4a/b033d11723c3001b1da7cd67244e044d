@@ -1,0 +1,82 @@
+package com.profile.user.entity;
+
+import javax.persistence.*;
+
+
+@Entity
+@Table(name="user_profile")
+public class UserProfileEntity {
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name= "Id")
+	private int id;
+	@Column(name="Nm_first")
+	private String nm_first;
+	@Column(name="Nm_middle")
+	private String nm_middle;
+	@Column(name="Nm_last")
+	private String nm_last;
+	
+	@OneToOne(mappedBy= "userProfile", cascade=CascadeType.ALL)
+	private UserAddressEntity userAddress;
+	
+	public UserProfileEntity(String nm_first, String nm_middle, String nm_last) {
+		
+		this.nm_first = nm_first;
+		this.nm_middle = nm_middle;
+		this.nm_last = nm_last;
+			
+	}
+	
+	public UserProfileEntity() {
+		
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getNm_first() {
+		return nm_first;
+	}
+
+	public void setNm_first(String nm_first) {
+		this.nm_first = nm_first;
+	}
+
+	public String getNm_middle() {
+		return nm_middle;
+	}
+
+	public void setNm_middle(String nm_middle) {
+		this.nm_middle = nm_middle;
+	}
+
+	public String getNm_last() {
+		return nm_last;
+	}
+
+	public void setNm_last(String nm_last) {
+		this.nm_last = nm_last;
+	}
+
+
+
+	public UserAddressEntity getUserAddress() {
+		return userAddress;
+	}
+
+
+
+	public void setUserAddress(UserAddressEntity userAddress) {
+		this.userAddress = userAddress;
+	}
+
+
+
+}

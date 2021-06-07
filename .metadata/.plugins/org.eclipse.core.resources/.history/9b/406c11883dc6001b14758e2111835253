@@ -1,0 +1,47 @@
+package com.profile.user.controller;
+
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.profile.user.dto.UserProfileDto;
+import com.profile.user.service.ServiceProfileUser;
+
+@RestController
+@RequestMapping("/userProfile")
+public class UserProfileController {
+	
+	@Autowired
+	private ServiceProfileUser serviceProfileUser;
+	
+	@PostMapping("/add")
+	public UserProfileDto createProfileUser(@RequestBody UserProfileDto userPD) {
+		
+		return serviceProfileUser.createProfileUser(userPD);
+	}
+	
+	@GetMapping("/getAll")
+	public List<UserProfileDto> getAllUser(){
+		
+		return serviceProfileUser.getAll();
+	}
+	
+	@PutMapping("/update")
+	public UserProfileDto update(@RequestBody UserProfileDto userPD) {
+		return serviceProfileUser.update(userPD);
+	}
+	
+	@DeleteMapping("/delete")
+	public String delete(@RequestBody UserProfileDto userPD){
+		serviceProfileUser.delete(userPD);
+		return "Usuario Eliminado con Exito";
+	}
+	
+
+}

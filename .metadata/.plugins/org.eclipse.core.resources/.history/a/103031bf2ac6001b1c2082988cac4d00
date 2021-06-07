@@ -1,0 +1,64 @@
+package com.profile.user.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.profile.user.dto.UserProfileDto;
+import com.profile.user.entity.UserProfileEntity;
+import com.profile.user.iservice.IserviceProfileUser;
+import com.profile.user.repository.UserProfileRepository;
+
+@Service
+public class ServiceProfileUser implements IserviceProfileUser {
+	
+	@Autowired
+	private UserProfileRepository userProfileRepo;
+
+	@Override
+	public UserProfileDto createProfileUser(UserProfileDto userPM) {
+		// TODO Auto-generated method stub
+		UserProfileEntity pUserTosaved = UserProfileDto.userPDtoToUserPEntity(userPM);
+		UserProfileEntity pUserSaved = (UserProfileEntity) userProfileRepo.save(pUserTosaved);
+		
+		return UserProfileDto.userPEntityToUserPDto(pUserSaved);
+	}
+
+	@Override
+	public List<UserProfileDto> getAll() {
+		// TODO Auto-generated method stub
+		List<UserProfileEntity> listUPE = userProfileRepo.findAll();
+		List<UserProfileDto> listUPM = UserProfileDto.listUPEtolistUPD(listUPE);
+	
+		return listUPM;
+	}
+
+	@Override
+	public UserProfileDto update(UserProfileDto userP) {
+		// TODO Auto-generated method stub
+		UserProfileEntity userPE = UserProfileDto.userPDtoToUserPEntity(userP);
+		boolean user = userProfileRepo.existsById(userPE.getId());
+		if(user) {
+			userP = UserProfileDto.userPEntityToUserPDto(userProfileRepo.save(userPE));
+		}
+		return null;
+	}
+
+	@Override
+	public UserProfileDto delete(UserProfileDto userPD) {
+		// TODO Auto-generated method stub
+		UserProfileEntity userPE = UserProfileDto.userPDtoToUserPEntity(userPD);
+		boolean idUser = userProfileRepo.existsById(userPE.getId());
+		if(idUser) {
+			userPD = UserProfileDto.userPEntityToUserPDto(userPE);
+			
+		}
+		return null;
+	}
+
+	
+
+
+}

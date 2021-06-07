@@ -1,0 +1,13 @@
+package com.profile.user.iservice;
+
+import java.util.List;
+
+import com.profile.user.dto.UserProfileDto;
+import com.profile.user.entity.UserProfileEntity;
+
+public interface IserviceProfileUser {
+	
+	public abstract UserProfileDto createProfileUser(UserProfileDto userP);
+	public List<UserProfileDto> getAll();
+	public UserProfileDto update(UserProfileDto userP, String message);
+}

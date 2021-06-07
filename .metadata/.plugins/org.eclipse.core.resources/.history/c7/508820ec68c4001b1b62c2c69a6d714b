@@ -1,0 +1,12 @@
+package com.profile.user.iservice;
+
+import java.util.List;
+
+import com.profile.user.model.UserAddressModel;
+
+public interface IserviceAddressUser {
+	
+	public abstract UserAddressModel createAddress(UserAddressModel userAM);
+	public List<UserAddressModel> getAll();
+
+}

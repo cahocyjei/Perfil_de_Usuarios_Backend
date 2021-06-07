@@ -1,0 +1,28 @@
+package com.profile.user.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.profile.user.dto.DtoAddressProfile;
+import com.profile.user.dto.DtoUserProfile;
+import com.profile.user.entity.UserAddressEntity;
+import com.profile.user.iservice.IserviceAddressUser;
+import com.profile.user.model.UserAddressModel;
+import com.profile.user.model.UserProfileModel;
+import com.profile.user.repository.AddressProfileRepository;
+
+@Service
+public class ServiceAddressUser implements IserviceAddressUser {
+	
+	@Autowired
+	private AddressProfileRepository addressPRepository;
+
+	@Override
+	public UserAddressModel createAddress(UserAddressModel userAM) {
+		// TODO Auto-generated method stub
+		UserAddressEntity addressTosaved = DtoAddressProfile.userAModelToUserAEntity(userAM);
+		UserAddressEntity addressSaved = (UserAddressEntity) addressPRepository.save(addressTosaved);
+		return DtoAddressProfile.userPEntityToUserPModel(addressSaved);
+	}
+
+}

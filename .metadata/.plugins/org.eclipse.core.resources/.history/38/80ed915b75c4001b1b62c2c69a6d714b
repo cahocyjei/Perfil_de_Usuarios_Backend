@@ -1,0 +1,66 @@
+package com.profile.user.entity;
+
+import javax.persistence.*;
+
+
+@Entity
+@Table(name="user_profile")
+public class UserProfileEntity {
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name= "Id")
+	private int id;
+	@Column(name="Nm_first")
+	private String firstName;
+	@Column(name="Nm_middle")
+	private String middleName;
+	@Column(name="Nm_last")
+	private String lastName;
+	
+	@OneToOne(fetch= FetchType.LAZY, mappedBy= "userProfile", cascade=CascadeType.ALL)
+	private UserAddressEntity userAddress;
+	
+	
+	
+	public UserProfileEntity(String firstName, String middleName, String lastName) {
+		super();
+		this.firstName = firstName;
+		this.middleName = middleName;
+		this.lastName = lastName;
+	}
+
+	public UserProfileEntity() {
+		
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
+	public UserProfileEntity(int id, String firstName, String middleName, String lastName) {
+		super();
+		this.id = id;
+		this.firstName = firstName;
+		this.middleName = middleName;
+		this.lastName = lastName;
+	}
+
+	public UserAddressEntity getUserAddress() {
+		return userAddress;
+	}
+
+
+
+	public void setUserAddress(UserAddressEntity userAddress) {
+		this.userAddress = userAddress;
+	}
+
+
+
+}

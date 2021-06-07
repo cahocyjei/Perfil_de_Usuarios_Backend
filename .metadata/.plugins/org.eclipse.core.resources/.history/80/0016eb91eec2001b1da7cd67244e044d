@@ -1,0 +1,12 @@
+package com.profile.user.iservice;
+
+import java.util.List;
+
+import com.profile.user.entity.UserProfileEntity;
+import com.profile.user.model.UserProfileModel;
+
+public interface IserviceProfileUser {
+	
+	public abstract UserProfileModel createProfileUser(UserProfileModel userP);
+	public List<UserProfileModel> getAll(List<UserProfileEntity> listUserPE);
+}

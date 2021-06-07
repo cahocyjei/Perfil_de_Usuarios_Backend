@@ -1,0 +1,28 @@
+package com.profile.user.dto;
+
+import java.util.List;
+
+import com.profile.user.entity.UserAddressEntity;
+import com.profile.user.model.UserAddressModel;
+
+public class DtoAddressProfile {
+	
+	public static UserAddressEntity userAModelToUserAEntity(UserAddressModel userAM) {
+		UserAddressEntity userAE = new UserAddressEntity();
+		userAE.setAddress(userAM.getAddress());
+		userAE.setUserProfile(userAE.getUserProfile());
+		return userAE;
+	}
+	
+	public static UserAddressModel userPEntityToUserPModel(UserAddressEntity userAE) {
+		UserAddressModel userAM = new UserAddressModel();
+		userAM.setAddress(userAE.getAddress());
+		userAM.setUserProfile(userAM.getUserProfile());
+		userAM.setId(userAE.getId());
+		return userAM;
+	}
+	
+	public static List<UserAddressEntity> listUAMtolistUAE(List<UserAddresModel listUAM>){
+		return null;
+	}
+}

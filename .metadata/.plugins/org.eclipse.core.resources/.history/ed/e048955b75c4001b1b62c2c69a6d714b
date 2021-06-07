@@ -1,0 +1,93 @@
+package com.profile.user.dto;
+
+import java.util.LinkedList;
+import java.util.List;
+
+import com.profile.user.entity.UserAddressEntity;
+import com.profile.user.entity.UserProfileEntity;
+
+public class UserProfileDto {
+
+	private int id;
+	private String firstName;
+	private String middleName;
+	private String lastName;
+	
+	private String address;
+
+
+	public UserProfileDto(String firstName, String middleName, String lastName) {
+		super();
+		this.firstName = firstName;
+		this.middleName = middleName;
+		this.lastName = lastName;
+	}
+
+
+	public UserProfileDto() {
+		
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
+	public UserProfileDto(int id, String firstName, String middleName, String lastName) {
+
+		this.id = id;
+		this.firstName = firstName;
+		this.middleName = middleName;
+		this.lastName = lastName;
+	}
+
+
+	public String getAddress() {
+		return address;
+	}
+
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+
+	public static UserProfileEntity userPDtoToUserPEntity(UserProfileDto userPD) {
+		UserProfileEntity userPE = new UserProfileEntity();
+		userPE.setNm_first(userPD.firstName);
+		userPE.setNm_middle(userPD.middleName);
+		userPE.setNm_last(userPD.g);
+		userPE.setUserAddress(new UserAddressEntity(userPD.getAddress()));
+		
+		return userPE;
+	}
+
+
+	public static UserProfileDto userPEntityToUserPDto(UserProfileEntity userPE) {
+		UserProfileDto userPD = new UserProfileDto();
+		userPD.setNm_first(userPE.getNm_first());
+		userPD.setNm_middle(userPE.getNm_middle());
+		userPD.setNm_last(userPE.getNm_last());
+		userPD.setId(userPE.getId());
+		userPD.setAddress(userPE.getUserAddress().getAddress());
+		
+		return userPD;
+	}
+
+
+	public static List<UserProfileDto> listUPEtolistUPD(List<UserProfileEntity> listUPE){
+			
+			List<UserProfileDto> listUPM = new LinkedList<UserProfileDto>();
+			
+			for(UserProfileEntity userPEL:listUPE) {
+				listUPM.add(UserProfileDto.userPEntityToUserPDto(userPEL));
+			}
+		return listUPM;
+	}
+
+	
+}

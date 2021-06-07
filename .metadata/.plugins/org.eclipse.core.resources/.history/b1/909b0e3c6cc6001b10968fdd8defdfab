@@ -1,0 +1,52 @@
+package com.profile.user.controller;
+
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.profile.user.dto.UserProfileDto;
+import com.profile.user.service.ServiceProfileUser;
+
+@RestController
+@RequestMapping("/userProfile")
+public class UserProfileController {
+	
+	@Autowired
+	private ServiceProfileUser serviceProfileUser;
+	
+	@PostMapping("/add")
+	public String createProfileUser(@RequestBody UserProfileDto userPD) {
+		;
+		return serviceProfileUser.createProfileUser(userPD);
+	}
+	
+	@GetMapping("/getAll")
+	public List<UserProfileDto> getAllUser(){
+		
+		return serviceProfileUser.getAll();
+	}
+	
+	@PutMapping("/update")
+	public UserProfileDto update(@RequestBody UserProfileDto userPD) {
+		return serviceProfileUser.update(userPD);
+	}
+	
+	@DeleteMapping("/delete/{id}")
+	public String delete(@PathVariable int id){
+		
+		return serviceProfileUser.delete(id);
+	}
+	@GetMapping("/getById/{id}")
+	public UserProfileDto getById(@PathVariable int id) {
+		
+		return serviceProfileUser.getById(id);
+	}
+
+}

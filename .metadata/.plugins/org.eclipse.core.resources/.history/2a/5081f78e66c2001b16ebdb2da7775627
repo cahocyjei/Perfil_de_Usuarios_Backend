@@ -1,0 +1,8 @@
+package com.profile.user.iservice;
+
+import com.profile.user.model.UserProfileModel;
+
+public interface IserviceProfileUser {
+	
+	public abstract UserProfileModel createProfileUser(UserProfileModel userP);
+}

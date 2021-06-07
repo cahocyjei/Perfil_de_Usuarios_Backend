@@ -1,0 +1,5 @@
+package com.profile.user.iservice;
+
+public interface IserviceAddressUser {
+
+}

@@ -1,0 +1,87 @@
+package com.profile.user.dto;
+
+import java.util.LinkedList;
+import java.util.List;
+
+import com.profile.user.dto.DtoAddressProfile;
+import com.profile.user.entity.UserAddressEntity;
+import com.profile.user.entity.UserProfileEntity;
+
+public class UserAddressDto {
+	
+	
+	private int id;
+	private String address;
+	
+	private UserProfileEntity userProfile;
+	
+	public UserAddressDto(int id, String address) {
+		
+		this.id = id;
+		this.address = address;
+	}
+	
+
+	public UserAddressDto() {
+		
+	}
+
+
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+
+	public UserProfileEntity getUserProfile() {
+		return userProfile;
+	}
+
+
+	public void setUserProfile(UserProfileEntity userProfile) {
+		this.userProfile = userProfile;
+	}
+
+
+	public static List<UserAddressDto> listUAEtolistUAM(List<UserAddressEntity> listUAE){
+		
+			List<UserAddressDto> listUAM = new LinkedList<UserAddressDto>();
+			for(UserAddressEntity userAEL:listUAE) {
+				listUAM.add(DtoAddressProfile.userAEntityToUserAModel(userAEL));
+			}
+			
+		return listUAM;
+	}
+
+
+	public static UserAddressDto userAEntityToUserAModel(UserAddressEntity userAE) {
+		UserAddressDto userAM = new UserAddressDto();
+		userAM.setId(userAE.getId());
+		userAM.setAddress(userAE.getAddress());
+		userAM.getUserProfile();
+		return userAM;
+	}
+
+
+	public static UserAddressEntity userAModelToUserAEntity(UserAddressDto userAM) {
+		UserAddressEntity userAE = new UserAddressEntity();
+		userAE.setAddress(userAM.getAddress());
+		userAE.setUserProfile(userAM.getUserProfile());
+	
+		return userAE;
+	}
+
+	
+}

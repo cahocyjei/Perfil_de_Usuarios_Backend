@@ -1,0 +1,22 @@
+package com.profile.user.dto;
+
+import com.profile.user.entity.UserAddressEntity;
+import com.profile.user.entity.UserProfileEntity;
+import com.profile.user.model.UserAddressModel;
+import com.profile.user.model.UserProfileModel;
+
+public class DtoAddressProfile {
+	public static UserAddressEntity userAModelToUserAEntity(UserAddressModel userAM) {
+		UserAddressEntity userAE = new UserAddressEntity();
+		userAE.setAddress(userAM.getAddress());
+		return userAE;
+	}
+	
+	public static UserAddressModel userPEntityToUserPModel(UserAddressEntity userAE) {
+		UserAddressModel userAM = new UserAddressModel();
+		userPM.setNm_first(userPE.getNm_first());
+		userPM.setNm_middle(userPE.getNm_middle());
+		userPM.setNm_last(userPE.getNm_last());
+		return userPM;
+	}
+}

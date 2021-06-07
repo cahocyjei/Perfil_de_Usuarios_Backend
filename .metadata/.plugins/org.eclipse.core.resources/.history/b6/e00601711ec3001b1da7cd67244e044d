@@ -1,0 +1,69 @@
+package com.profile.user.model;
+
+
+public class UserProfileModel {
+
+	private int id;
+	private String nm_first;
+	private String nm_middle;
+	private String nm_last;
+	
+	private UserAddressModel userAddress;
+	
+	public UserProfileModel(String nm_first, String nm_middle, String nm_last) {
+		
+		this.nm_first = nm_first;
+		this.nm_middle = nm_middle;
+		this.nm_last = nm_last;
+		
+		
+	}
+	
+
+	public UserProfileModel() {
+		
+	}
+
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getNm_first() {
+		return nm_first;
+	}
+
+	public void setNm_first(String nm_first) {
+		this.nm_first = nm_first;
+	}
+
+	public String getNm_middle() {
+		return nm_middle;
+	}
+
+	public void setNm_middle(String nm_middle) {
+		this.nm_middle = nm_middle;
+	}
+
+	public String getNm_last() {
+		return nm_last;
+	}
+
+	public void setNm_last(String nm_last) {
+		this.nm_last = nm_last;
+	}
+
+	public UserAddressModel getUserAddress() {
+		return userAddress;
+	}
+
+	public void setUserAddress(UserAddressModel userAddress) {
+		this.userAddress = userAddress;
+	}
+	
+	
+}
