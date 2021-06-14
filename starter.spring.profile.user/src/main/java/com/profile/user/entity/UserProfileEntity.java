@@ -1,29 +1,35 @@
 package com.profile.user.entity;
 
+import java.util.Date;
+
 import javax.persistence.*;
+
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 
 @Entity
 @Table(name="user_profile")
+@Inheritance(strategy  = InheritanceType.JOINED)
 public class UserProfileEntity {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name= "id")
-	private int id;
+	@Column(name= "id_user")
+	private int idUserProfile;
 	@Column(name="first_name")
 	private String firstName;
 	@Column(name="middle_name")
 	private String middleName;
 	@Column(name="last_name")
 	private String lastName;
+	@Column(name="user_addres")
+	private String address;
 	
-	
-	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="id_address")
-	private UserAddressEntity userAddress;
-	
-	
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(iso = ISO.DATE)
+	@Column(name = "create_date")
+	private Date createDate;
 	
 	public UserProfileEntity(String firstName, String middleName, String lastName) {
 
@@ -35,15 +41,31 @@ public class UserProfileEntity {
 	public UserProfileEntity() {
 		
 	}
-
-	public int getId() {
-		return id;
+	
+	public UserProfileEntity(Date createDate) {
+	
+		this.createDate = createDate;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public int getIdUserProfile() {
+		return idUserProfile;
 	}
 
+	public void setIdUserProfile(int idUserProfile) {
+		this.idUserProfile = idUserProfile;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
 
 	public String getFirstName() {
 		return firstName;
@@ -65,18 +87,12 @@ public class UserProfileEntity {
 		return lastName;
 	}
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public Date getCreateDate() {
+		return createDate;
 	}
 
-	public UserAddressEntity getUserAddress() {
-		return userAddress;
+	public void setCreateDate(Date createDate) {
+		
+		this.createDate = createDate;
 	}
-
-
-	public void setUserAddress(UserAddressEntity userAddress) {
-		this.userAddress = userAddress;
-	}
-
-
 }
